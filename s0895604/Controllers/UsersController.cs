@@ -12,7 +12,6 @@ namespace s0895604.Controllers
 {
     public class UsersController : BaseController
     {
-        private DatabaseContext db = new DatabaseContext();
 
         // GET: Users/Register
         public ActionResult Register()

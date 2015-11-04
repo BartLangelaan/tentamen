@@ -10,10 +10,8 @@ using s0895604.Models;
 
 namespace s0895604.Controllers
 {
-    public class ReviewsController : Controller
+    public class ReviewsController : BaseController
     {
-        private DatabaseContext db = new DatabaseContext();
-
         // GET: Reviews
         public ActionResult Index()
         {

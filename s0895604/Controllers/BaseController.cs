@@ -9,6 +9,8 @@ namespace s0895604.Controllers
 {
     public class BaseController : Controller
     {
+        protected DatabaseContext db = new DatabaseContext();
+
         private User _loggedInUser;
         public User LoggedInUser
         {
@@ -17,9 +19,11 @@ namespace s0895604.Controllers
                 if (_loggedInUser != null)
                     return _loggedInUser;
 
-                return null;
+                if (Session["UserId"] == null) return null;
 
-                return (User) Session["userId"];
+                var user = db.Accounts.First(a => a.UserId == (int) Session["UserId"]);
+                _loggedInUser = user;
+                return user;
             }
             set
             {
@@ -27,5 +31,21 @@ namespace s0895604.Controllers
                 Session["UserId"] = value.UserId;
             }
         }
+
+        public class AuthorizeLoggedInAttribute : AuthorizeAttribute
+        {
+
+            protected override bool AuthorizeCore(HttpContextBase httpContext)
+            {
+                if (httpContext.Session["UserId"] != null)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
     }
+
+
 }

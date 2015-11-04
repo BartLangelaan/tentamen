@@ -10,9 +10,9 @@ using s0895604.Models;
 
 namespace s0895604.Controllers
 {
-    public class CategoriesController : Controller
+    public class CategoriesController : BaseController
     {
-        private DatabaseContext db = new DatabaseContext();
+        
 
         // GET: Categories
         public ActionResult Index()

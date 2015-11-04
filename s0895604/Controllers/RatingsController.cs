@@ -10,9 +10,8 @@ using s0895604.Models;
 
 namespace s0895604.Controllers
 {
-    public class RatingsController : Controller
+    public class RatingsController : BaseController
     {
-        private DatabaseContext db = new DatabaseContext();
 
         // GET: Ratings
         public ActionResult Index()
