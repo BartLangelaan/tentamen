@@ -30,7 +30,6 @@ namespace s0895604.Models
         [DisplayName("Achternaam")]
         public string LastName { get; set; }
 
-        [Required]
         [DisplayName("Rol")]
         public UserRole Role { get; set; }
 
@@ -44,8 +43,6 @@ namespace s0895604.Models
         }
 
         public virtual ICollection<Review> Reviews { get; set; } 
-
-        public virtual ICollection<Rating> Ratings { get; set; } 
     }
 
     public enum UserRole

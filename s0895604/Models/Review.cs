@@ -22,7 +22,6 @@ namespace s0895604.Models
         public string Content { get; set; }
 
 
-        [Required]
         [DisplayName("Gebruiker")]
         public int UserId { get; set; }
         public virtual User User { get; set; }
@@ -30,7 +29,6 @@ namespace s0895604.Models
         [DisplayName("Gemaakt op")]
         public DateTime CreatedDateTime { get; set; }
 
-        [Required]
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
 

@@ -12,12 +12,10 @@ namespace s0895604.Models
         [Key]
         public int RatingId { get; set; }
 
-        [Required]
         [DisplayName("Review")]
         public int ReviewId { get; set; }
         public virtual Review Review { get; set; }
 
-        [Required]
         [DisplayName("Gebruiker")]
         public int UserId { get; set; }
         public virtual User User { get; set; }
