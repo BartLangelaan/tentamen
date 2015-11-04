@@ -20,5 +20,20 @@ namespace s0895604.Models
         }
 
         public System.Data.Entity.DbSet<s0895604.Models.User> Accounts { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Rating>()
+                .HasRequired(c => c.User)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Review>()
+                .HasRequired(c => c.User)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
