@@ -9,7 +9,7 @@
 </head>
 
 @{
-    string bodyClass = "anonymous";
+    var bodyClass = "anonymous";
     if (ViewBag.LoggedInUser != null)
     {
         bodyClass = "user";
@@ -32,16 +32,26 @@
                 @Html.ActionLink("Consuming Critics (CC)", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-right">
                     @if (ViewBag.LoggedInUser == null)
                     {
-                        <!-- TODO: Log in -->
+                        <li>@Html.ActionLink("Log in", "Login", "Users")</li>
                         <li>@Html.ActionLink("Registreer", "Register", "Users")</li>
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Mijn Reviews", "Index", "Reviews")</li>
-                        <!-- TODO: Log uit-->
+                        if (ViewBag.LoggedInUser.Role == s0895604.Models.UserRole.Admin)
+                        {
+                            <li>@Html.ActionLink("Gebruikers", "Index", "Users")</li>
+                            <li>@Html.ActionLink("Categorieën", "Index", "Categories")</li>
+                            <li>@Html.ActionLink("Reviews", "Index", "Reviews")</li>
+                            <li>@Html.ActionLink("Beoordelingen", "Index", "Ratings")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Mijn Reviews", "Index", "Reviews")</li>
+                        }
+                        <li>@Html.ActionLink("Log uit", "Logout", "Users")</li>
                     }
                 </ul>
             </div>
@@ -51,11 +61,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application - 
-            @if (ViewBag.LoggedInUser != null)
-            {
-                @ViewBag.LoggedInUser.FirstName
-            }</p>
+            <p>&copy; @DateTime.Now.Year Bart Langelaan - <a href="https://github.com/bartlangelaan/tentamen">Broncode</a></p>
         </footer>
     </div>
 
