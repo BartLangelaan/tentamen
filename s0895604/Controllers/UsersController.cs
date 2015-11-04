@@ -28,6 +28,8 @@ namespace s0895604.Controllers
         {
             if (ModelState.IsValid)
             {
+                user.Role = UserRole.User;
+                user.Active = true;
                 db.Accounts.Add(user);
                 db.SaveChanges();
                 LoggedInUser = user;

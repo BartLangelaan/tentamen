@@ -36,12 +36,6 @@ namespace s0895604.Models
         [DisplayName("Actief")]
         public bool Active { get; set; }
 
-        public User()
-        {
-            Role = UserRole.User;
-            Active = true;
-        }
-
         public virtual ICollection<Review> Reviews { get; set; } 
     }
 
