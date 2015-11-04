@@ -10,14 +10,18 @@ using s0895604.Models;
 
 namespace s0895604.Controllers
 {
+    [AuthorizeLoggedIn]
     public class ReviewsController : BaseController
     {
         // GET: Reviews
         public ActionResult Index()
         {
+            // TODO: Add MyReviews
             var reviews = db.Reviews.Include(r => r.Category).Include(r => r.User);
             return View(reviews.ToList());
         }
+
+
 
         // GET: Reviews/Details/5
         public ActionResult Details(int? id)
@@ -38,7 +42,8 @@ namespace s0895604.Controllers
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name");
-            ViewBag.UserId = new SelectList(db.Accounts, "UserId", "Username");
+            //ViewBag.UserId = new SelectList(db.Accounts, "UserId", "Username");
+            // TODO: Add ViewBag.UserId
             return View();
         }
 
@@ -47,17 +52,18 @@ namespace s0895604.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReviewId,Name,Content,UserId,CreatedDateTime,CategoryId")] Review review)
+        public ActionResult Create([Bind(Include = "Name,Content,CategoryId")] Review review)
         {
             if (ModelState.IsValid)
             {
+                // TODO: Add UserId, CreatedDateTime
                 db.Reviews.Add(review);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", review.CategoryId);
-            ViewBag.UserId = new SelectList(db.Accounts, "UserId", "Username", review.UserId);
+            // TODO: Add ViewBag.UserId
             return View(review);
         }
 
@@ -73,8 +79,9 @@ namespace s0895604.Controllers
             {
                 return HttpNotFound();
             }
+            // TODO: Limit to user
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", review.CategoryId);
-            ViewBag.UserId = new SelectList(db.Accounts, "UserId", "Username", review.UserId);
+            // TODO: Add ViewBag.UserId
             return View(review);
         }
 
@@ -85,6 +92,7 @@ namespace s0895604.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ReviewId,Name,Content,UserId,CreatedDateTime,CategoryId")] Review review)
         {
+            // TODO: Limit to user
             if (ModelState.IsValid)
             {
                 db.Entry(review).State = EntityState.Modified;
@@ -99,6 +107,7 @@ namespace s0895604.Controllers
         // GET: Reviews/Delete/5
         public ActionResult Delete(int? id)
         {
+            // TODO: Limit to user
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -117,11 +126,13 @@ namespace s0895604.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Review review = db.Reviews.Find(id);
+            // TODO: Limit to user
             db.Reviews.Remove(review);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
+        [AuthorizeLoggedIn(true)]
         protected override void Dispose(bool disposing)
         {
             if (disposing)
