@@ -10,9 +10,36 @@ using s0895604.Models;
 
 namespace s0895604.Controllers
 {
-    public class UsersController : Controller
+    public class UsersController : BaseController
     {
         private DatabaseContext db = new DatabaseContext();
+
+        // GET: Users/Register
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        // POST: Users/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register([Bind(Include = "Username,Password,FirstName,LastName")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Accounts.Add(user);
+                db.SaveChanges();
+                LoggedInUser = user;
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(user);
+        }
+
+
+
 
         // GET: Users
         public ActionResult Index()
