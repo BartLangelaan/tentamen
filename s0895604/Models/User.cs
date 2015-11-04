@@ -42,6 +42,10 @@ namespace s0895604.Models
             Role = UserRole.User;
             Active = true;
         }
+
+        public virtual ICollection<Review> Reviews { get; set; } 
+
+        public virtual ICollection<Rating> Ratings { get; set; } 
     }
 
     public enum UserRole
