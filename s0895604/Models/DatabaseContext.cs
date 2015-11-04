@@ -19,6 +19,6 @@ namespace s0895604.Models
         {
         }
 
-        public System.Data.Entity.DbSet<s0895604.Models.Account> Accounts { get; set; }
+        public System.Data.Entity.DbSet<s0895604.Models.User> Accounts { get; set; }
     }
 }

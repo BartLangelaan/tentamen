@@ -4,13 +4,14 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Microsoft.Ajax.Utilities;
 
 namespace s0895604.Models
 {
-    public class Account
+    public class User
     {
         [Key]
-        public int Id { get; set; }
+        public int UserId { get; set; }
 
         [Required]
         [DisplayName("Gebruikersnaam")]
@@ -29,28 +30,21 @@ namespace s0895604.Models
         [DisplayName("Achternaam")]
         public string LastName { get; set; }
 
+        [Required]
         [DisplayName("Rol")]
-        public AccountRole Role { get; set; }
+        public UserRole Role { get; set; }
 
         [DisplayName("Actief")]
         public bool Active { get; set; }
 
-        public Account()
+        public User()
         {
-            Role = AccountRole.User;
+            Role = UserRole.User;
             Active = true;
-        }
-
-        private static Account _activeAccount;
-
-        public static Account ActiveAccount
-        {
-            get { return _activeAccount; }
-            set { _activeAccount = value; }
         }
     }
 
-    public enum AccountRole
+    public enum UserRole
     {
         Admin = 1,
         User = 2
