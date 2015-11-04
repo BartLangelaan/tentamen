@@ -43,12 +43,14 @@ namespace s0895604.Controllers
 
 
         // GET: Users
+        [AuthorizeLoggedIn(true)]
         public ActionResult Index()
         {
             return View(db.Accounts.ToList());
         }
 
         // GET: Users/Details/5
+        [AuthorizeLoggedIn(true)]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -64,6 +66,7 @@ namespace s0895604.Controllers
         }
 
         // GET: Users/Create
+        [AuthorizeLoggedIn(true)]
         public ActionResult Create()
         {
             return View();
@@ -74,6 +77,7 @@ namespace s0895604.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthorizeLoggedIn(true)]
         public ActionResult Create([Bind(Include = "UserId,Username,Password,FirstName,LastName,Role,Active")] User user)
         {
             if (ModelState.IsValid)
@@ -87,6 +91,7 @@ namespace s0895604.Controllers
         }
 
         // GET: Users/Edit/5
+        [AuthorizeLoggedIn(true)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -106,6 +111,7 @@ namespace s0895604.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthorizeLoggedIn(true)]
         public ActionResult Edit([Bind(Include = "UserId,Username,Password,FirstName,LastName,Role,Active")] User user)
         {
             if (ModelState.IsValid)
@@ -118,6 +124,7 @@ namespace s0895604.Controllers
         }
 
         // GET: Users/Delete/5
+        [AuthorizeLoggedIn(true)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -133,6 +140,7 @@ namespace s0895604.Controllers
         }
 
         // POST: Users/Delete/5
+        [AuthorizeLoggedIn(true)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -143,6 +151,7 @@ namespace s0895604.Controllers
             return RedirectToAction("Index");
         }
 
+        [AuthorizeLoggedIn(true)]
         protected override void Dispose(bool disposing)
         {
             if (disposing)
