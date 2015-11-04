@@ -16,10 +16,14 @@ namespace s0895604.Controllers
         {
             get
             {
+                // If is cached, return cache
                 if (_loggedInUser != null)
                     return _loggedInUser;
 
+                // If not logged in, return null
                 if (Session["UserId"] == null) return null;
+
+                // If logged in, return user
                 int userId = (int) Session["UserId"];
                 var user = db.Accounts.First(a => a.UserId == userId);
                 _loggedInUser = user;
@@ -29,19 +33,30 @@ namespace s0895604.Controllers
             {
                 _loggedInUser = value;
                 Session["UserId"] = value.UserId;
+                Session["UserRole"] = value.Role;
             }
         }
 
         public class AuthorizeLoggedInAttribute : AuthorizeAttribute
         {
 
+            protected bool Admin;
+
             protected override bool AuthorizeCore(HttpContextBase httpContext)
             {
-                if (httpContext.Session["UserId"] != null)
+                if (httpContext.Session == null || httpContext.Session["UserId"] == null) return false;
+
+                if (Admin)
                 {
-                    return true;
+                    return (UserRole) httpContext.Session["UserRole"] == UserRole.Admin;
                 }
-                return false;
+
+                return true;
+            }
+
+            public AuthorizeLoggedInAttribute(bool admin = false)
+            {
+                Admin = admin;
             }
         }
 
