@@ -4,7 +4,7 @@
 Tentamen MVC Hogeschool Rotterdam jaar 2 periode 1.
 
 ## De opdracht
-De complete opdracht is te vinden via volgende link (google docs):
+De complete opdracht is te vinden via volgende link (google docs): https://goo.gl/giwxgN
 
 Hierin vind je:
 
