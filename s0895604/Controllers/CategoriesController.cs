@@ -10,6 +10,7 @@ using s0895604.Models;
 
 namespace s0895604.Controllers
 {
+    [AuthorizeLoggedIn]
     public class CategoriesController : BaseController
     {
         
@@ -36,6 +37,7 @@ namespace s0895604.Controllers
         }
 
         // GET: Categories/Create
+        [AuthorizeLoggedIn(true)]
         public ActionResult Create()
         {
             return View();
@@ -45,6 +47,7 @@ namespace s0895604.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [AuthorizeLoggedIn(true)]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CategoryId,Name")] Category category)
         {
@@ -59,6 +62,7 @@ namespace s0895604.Controllers
         }
 
         // GET: Categories/Edit/5
+        [AuthorizeLoggedIn(true)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,6 +81,7 @@ namespace s0895604.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [AuthorizeLoggedIn(true)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CategoryId,Name")] Category category)
         {
@@ -90,6 +95,7 @@ namespace s0895604.Controllers
         }
 
         // GET: Categories/Delete/5
+        [AuthorizeLoggedIn(true)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -106,6 +112,7 @@ namespace s0895604.Controllers
 
         // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
+        [AuthorizeLoggedIn(true)]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -115,6 +122,7 @@ namespace s0895604.Controllers
             return RedirectToAction("Index");
         }
 
+        [AuthorizeLoggedIn(true)]
         protected override void Dispose(bool disposing)
         {
             if (disposing)

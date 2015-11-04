@@ -17,6 +17,7 @@ namespace s0895604.Controllers
         public ActionResult Index()
         {
             // TODO: Add MyReviews
+            // TODO: Add Reviews from Category x
             var reviews = db.Reviews.Include(r => r.Category).Include(r => r.User);
             return View(reviews.ToList());
         }
