@@ -20,8 +20,8 @@ namespace s0895604.Controllers
                     return _loggedInUser;
 
                 if (Session["UserId"] == null) return null;
-
-                var user = db.Accounts.First(a => a.UserId == (int) Session["UserId"]);
+                int userId = (int) Session["UserId"];
+                var user = db.Accounts.First(a => a.UserId == userId);
                 _loggedInUser = user;
                 return user;
             }
@@ -43,6 +43,12 @@ namespace s0895604.Controllers
                 }
                 return false;
             }
+        }
+
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            ViewBag.LoggedInUser = LoggedInUser; //Add whatever
+            base.OnActionExecuting(filterContext);
         }
 
     }

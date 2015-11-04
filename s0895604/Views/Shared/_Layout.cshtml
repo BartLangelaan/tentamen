@@ -20,7 +20,16 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Register", "Register", "Users")</li>
+                    @if (ViewBag.LoggedInUser == null)
+                    {
+                        <!-- TODO: Log in -->
+                        <li>@Html.ActionLink("Registreer", "Register", "Users")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Mijn Reviews", "Index", "Reviews")</li>
+                        <!-- TODO: Log uit-->
+                    }
                 </ul>
             </div>
         </div>
@@ -29,7 +38,11 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application - 
+            @if (ViewBag.LoggedInUser != null)
+            {
+                @ViewBag.LoggedInUser.FirstName
+            }</p>
         </footer>
     </div>
 
