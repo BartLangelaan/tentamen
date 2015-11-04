@@ -14,7 +14,7 @@ namespace s0895604.App_Logic
             get
             {
                 var sessionController = new SessionController();
-                if (_user == null && sessionController.Session["UserId"] != null)
+                if (_user == null && sessionController.Session != null && sessionController.Session["UserId"] != null)
                 {
                     // TODO: Find User from UserId
                 }
