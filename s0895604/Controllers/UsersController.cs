@@ -19,7 +19,7 @@ namespace s0895604.Controllers
             return View();
         }
 
-        // POST: Users/Create
+        // POST: Users/Register
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -37,6 +37,48 @@ namespace s0895604.Controllers
             }
 
             return View(user);
+        }
+
+
+        // GET: Users/Login
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        // POST: Users/Login
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login([Bind(Include = "Username,Password")] User user)
+        {
+            User dbuser = db.Accounts.Find(user);
+            if (dbuser != null)
+            {
+                LoggedInUser = dbuser;
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(user);
+        }
+
+
+        // GET: Users/Logout
+        [AuthorizeLoggedIn]
+        public ActionResult Logout()
+        {
+            return View(LoggedInUser);
+        }
+
+        // POST: Users/Logout
+        [HttpPost]
+        [AuthorizeLoggedIn, ActionName("Logout")]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogoutConfirmed()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
         }
 
 
