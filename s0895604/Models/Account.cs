@@ -45,7 +45,7 @@ namespace s0895604.Models
 
         public static Account ActiveAccount
         {
-            get { return _activeAccount }
+            get { return _activeAccount; }
             set { _activeAccount = value; }
         }
     }
