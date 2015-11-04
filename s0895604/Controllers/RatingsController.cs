@@ -10,12 +10,14 @@ using s0895604.Models;
 
 namespace s0895604.Controllers
 {
+    [AuthorizeLoggedIn]
     public class RatingsController : BaseController
     {
 
-        // GET: Ratings
-        public ActionResult Index()
+        // GET: Ratings?product=
+        public ActionResult Index(int? review)
         {
+            // TODO: Only list ratings from review
             var ratings = db.Ratings.Include(r => r.Review).Include(r => r.User);
             return View(ratings.ToList());
         }
@@ -39,7 +41,7 @@ namespace s0895604.Controllers
         public ActionResult Create()
         {
             ViewBag.ReviewId = new SelectList(db.Reviews, "ReviewId", "Name");
-            ViewBag.UserId = new SelectList(db.Accounts, "UserId", "Username");
+            // TODO: Add ViewBag.UserId
             return View();
         }
 
@@ -48,7 +50,7 @@ namespace s0895604.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RatingId,ReviewId,UserId,RatingNumber")] Rating rating)
+        public ActionResult Create([Bind(Include = "ReviewId,RatingNumber")] Rating rating)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +60,7 @@ namespace s0895604.Controllers
             }
 
             ViewBag.ReviewId = new SelectList(db.Reviews, "ReviewId", "Name", rating.ReviewId);
-            ViewBag.UserId = new SelectList(db.Accounts, "UserId", "Username", rating.UserId);
+            // TODO: Add ViewBag.UserId
             return View(rating);
         }
 
@@ -74,8 +76,9 @@ namespace s0895604.Controllers
             {
                 return HttpNotFound();
             }
+            // Todo: Validate User
             ViewBag.ReviewId = new SelectList(db.Reviews, "ReviewId", "Name", rating.ReviewId);
-            ViewBag.UserId = new SelectList(db.Accounts, "UserId", "Username", rating.UserId);
+            // TODO: Add ViewBag.UserId
             return View(rating);
         }
 
@@ -86,6 +89,7 @@ namespace s0895604.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "RatingId,ReviewId,UserId,RatingNumber")] Rating rating)
         {
+            // TODO: Validate User
             if (ModelState.IsValid)
             {
                 db.Entry(rating).State = EntityState.Modified;
@@ -93,7 +97,7 @@ namespace s0895604.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ReviewId = new SelectList(db.Reviews, "ReviewId", "Name", rating.ReviewId);
-            ViewBag.UserId = new SelectList(db.Accounts, "UserId", "Username", rating.UserId);
+            // TODO: Add ViewBag.UserId
             return View(rating);
         }
 
@@ -109,6 +113,7 @@ namespace s0895604.Controllers
             {
                 return HttpNotFound();
             }
+            // TODO: Validate User
             return View(rating);
         }
 
@@ -118,11 +123,13 @@ namespace s0895604.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Rating rating = db.Ratings.Find(id);
+            // TODO: Validate User
             db.Ratings.Remove(rating);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
+        [AuthorizeLoggedIn(true)]
         protected override void Dispose(bool disposing)
         {
             if (disposing)
