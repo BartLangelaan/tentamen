@@ -43,8 +43,6 @@ namespace s0895604.Controllers
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name");
-            //ViewBag.UserId = new SelectList(db.Accounts, "UserId", "Username");
-            // TODO: Add ViewBag.UserId
             return View();
         }
 
@@ -55,16 +53,17 @@ namespace s0895604.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Name,Content,CategoryId")] Review review)
         {
+            review.User = LoggedInUser;
+            review.UserId = LoggedInUser.UserId;
+            review.CreatedDateTime = DateTime.Now;
             if (ModelState.IsValid)
             {
-                // TODO: Add UserId, CreatedDateTime
                 db.Reviews.Add(review);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", review.CategoryId);
-            // TODO: Add ViewBag.UserId
             return View(review);
         }
 
