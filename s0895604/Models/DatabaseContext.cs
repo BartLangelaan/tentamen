@@ -17,6 +17,7 @@ namespace s0895604.Models
     
         public DatabaseContext() : base("name=DatabaseContext")
         {
+            
         }
 
         public System.Data.Entity.DbSet<s0895604.Models.User> Accounts { get; set; }
@@ -35,5 +36,11 @@ namespace s0895604.Models
 
             base.OnModelCreating(modelBuilder);
         }
+
+        public System.Data.Entity.DbSet<s0895604.Models.Review> Reviews { get; set; }
+
+        public System.Data.Entity.DbSet<s0895604.Models.Category> Categories { get; set; }
+
+        public System.Data.Entity.DbSet<s0895604.Models.Rating> Ratings { get; set; }
     }
 }
