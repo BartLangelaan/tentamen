@@ -17,6 +17,7 @@ namespace s0895604.Controllers
 
         public ActionResult Reset()
         {
+            Session.Abandon();
             db.Database.ExecuteSqlCommand("delete from Ratings");
             db.Database.ExecuteSqlCommand("delete from Reviews");
             db.Database.ExecuteSqlCommand("delete from Categories");
@@ -24,7 +25,7 @@ namespace s0895604.Controllers
 
             if (db.Accounts.Count() != 0)
             {
-                return Content("Resetting failed failed");
+                return Content("Resetting failed");
             }
 
 
