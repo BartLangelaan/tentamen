@@ -14,7 +14,7 @@ namespace s0895604
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<DatabaseContext>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<DatabaseContext>());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
