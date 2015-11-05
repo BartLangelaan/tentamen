@@ -17,7 +17,7 @@
         @foreach (Review review in ViewBag.LatestReviews)
         {
             <h3>@review.Name</h3>
-            <p>@string.Join(" ", review.Content.Split(' ').Take(100))...</p>
+            <p>@string.Join(" ", review.Content.Split(' ').Take(20))...</p>
         }
     </div>
 </div>
