@@ -71,10 +71,11 @@ namespace s0895604.Controllers
             {
                 for (var i = 1; i <= 3; i++)
                 {
+                    string li = LoremIpsum(13, 15, 4, 6, 6);
                     db.Reviews.Add(new Review()
                     {
                         CategoryId = categoryId,
-                        Content = "Lorem Ipsum",
+                        Content = li,
                         CreatedDateTime = DateTime.Now,
                         Name = "Lorem Ipsum",
                         UserId = userId

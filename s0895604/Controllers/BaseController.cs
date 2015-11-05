@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using s0895604.Models;
@@ -65,6 +66,41 @@ namespace s0895604.Controllers
             ViewBag.LoggedInUser = LoggedInUser; //Add whatever
             base.OnActionExecuting(filterContext);
         }
+
+        protected static Random rand = new Random();
+
+        protected static string LoremIpsum(int minWords, int maxWords,
+            int minSentences, int maxSentences,
+            int numParagraphs)
+                {
+
+                    var words = new[]{"lorem", "ipsum", "dolor", "sit", "amet", "consectetuer",
+                "adipiscing", "elit", "sed", "diam", "nonummy", "nibh", "euismod",
+                "tincidunt", "ut", "laoreet", "dolore", "magna", "aliquam", "erat"};
+
+                    
+                    int numSentences = rand.Next(maxSentences - minSentences)
+                        + minSentences + 1;
+                    int numWords = rand.Next(maxWords - minWords) + minWords + 1;
+
+                    StringBuilder result = new StringBuilder();
+
+                    for (int p = 0; p < numParagraphs; p++)
+                    {
+                        for (int s = 0; s < numSentences; s++)
+                        {
+                            for (int w = 0; w < numWords; w++)
+                            {
+                                if (w > 0) { result.Append(" "); }
+                                result.Append(words[rand.Next(words.Length)]);
+                            }
+                            result.Append(". ");
+                        }
+                        result.Append("\n");
+                    }
+
+                    return result.ToString();
+                }
 
     }
 
