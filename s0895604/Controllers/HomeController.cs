@@ -14,7 +14,7 @@ namespace s0895604.Controllers
         {
             if (!db.Categories.Any())
             {
-                RedirectToAction("Reset");
+                return RedirectToAction("Reset");
             }
             if (LoggedInUser == null)
             {
