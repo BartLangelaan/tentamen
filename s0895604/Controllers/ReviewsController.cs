@@ -25,7 +25,7 @@ namespace s0895604.Controllers
                 if (category != null)
                     reviews = reviews.Where(a => a.Category.CategoryId == category);
 
-                if (search != null)
+                if (!string.IsNullOrEmpty(search))
                     reviews = reviews.Where(
                         a =>
                             a.Content.ToLower().Contains(search.ToLower()) ||
