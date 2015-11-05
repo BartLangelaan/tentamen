@@ -31,6 +31,8 @@ namespace s0895604.Models
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
 
-        //public virtual ICollection<Rating> Ratings { get; set; }
+        public bool Active { get; set; }
+
+        public virtual ICollection<Rating> Ratings { get; set; }
     }
 }
