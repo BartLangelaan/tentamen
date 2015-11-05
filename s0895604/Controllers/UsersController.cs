@@ -54,15 +54,21 @@ namespace s0895604.Controllers
         public ActionResult Login([Bind(Include = "Username,Password")] User user)
         {
             User dbuser = db.Accounts.SingleOrDefault(a => a.Username == user.Username && a.Password == user.Password);
-            if (dbuser != null)
+            if (dbuser == null)
             {
-                LoggedInUser = dbuser;
-                return RedirectToAction("Index", "Home");
+                ModelState.AddModelError(string.Empty, "Je gebruikersnaam of wachtwoord klopt niet.");
+
+                return View(user);
+            }
+            if (!dbuser.Active)
+            {
+                ModelState.AddModelError(string.Empty, "Je account is inactief.");
+
+                return View(user);
             }
 
-            ModelState.AddModelError(string.Empty, "Je gebruikersnaam of wachtwoord klopt niet.");
-
-            return View(user);
+            LoggedInUser = dbuser;
+            return RedirectToAction("Index", "Home");
         }
 
 

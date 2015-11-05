@@ -49,4 +49,4 @@ Hierin vind je:
 - [ ] Adminpagina
   - [x] Link naar beheer gebruikers, link naar beheer categorieeën, overzicht categorieën + CRUD (15 punten)
   - [x] Gebruiker in andere rol kunnen plaatsen (5 punten)
-  - [ ] Gebruiker actief/inactief kunnen maken (5 punten)
+  - [x] Gebruiker actief/inactief kunnen maken (5 punten)
