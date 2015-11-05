@@ -1,6 +1,6 @@
 ﻿# Tentamen MVC
 [![Build status](https://img.shields.io/appveyor/ci/bartlangelaan/tentamen.svg)](https://ci.appveyor.com/project/BartLangelaan/tentamen)
-![Aantal punten](https://img.shields.io/badge/aantal%20punten-70%2F95-red.svg)
+![Aantal punten](https://img.shields.io/badge/aantal%20punten-85%2F95-red.svg)
 
 Tentamen MVC Hogeschool Rotterdam jaar 2 periode 1.
 
@@ -33,9 +33,9 @@ Hierin vind je:
   - [ ] Rekening houden met witruimtes (5 punten)
   - [ ] Een beoordeling kunnen geven (5 punten)
   - [ ] Niet 2x een beoordeling kunnen geven (5 punten)
-- [ ] Beoordelingen per review
-  - [ ] Naam product + lijst waarderingen (10 punten)
-  - [ ] Naam beoordelaar bij waardering (5 punten)
+- [x] Beoordelingen per review
+  - [x] Naam product + lijst waarderingen (10 punten)
+  - [x] Naam beoordelaar bij waardering (5 punten)
 - [ ] Mijn reviews
   - [ ] Nieuwe review pas mogelijk na 3 beoordelingen (5 punten)
   - [ ] Gemiddelde waardering, totaal aantal waarderingen, naam product, aanmaakdatum, 100 tekens inhoud, link om actief te maken, aanpasknop (10 punten)
