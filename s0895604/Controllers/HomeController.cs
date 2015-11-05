@@ -10,9 +10,20 @@ namespace s0895604.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Reviews = db.Reviews.Count();
-            ViewBag.Ratings = db.Ratings.Count();
-            return View();
+            if (!db.Categories.Any())
+            {
+                RedirectToAction("Reset");
+            }
+            if (LoggedInUser == null)
+            {
+                ViewBag.Reviews = db.Reviews.Count();
+                ViewBag.Ratings = db.Ratings.Count();
+                return View();
+            }
+            else
+            {
+                return View("LoggedInIndex");
+            }
         }
 
         public ActionResult Reset()
