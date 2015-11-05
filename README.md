@@ -43,10 +43,10 @@ Hierin vind je:
 - [ ] Reviews
   - [x] Lijst actieve reviews (10 punten)
   - [x] Gemiddelde beoordeling per review (5 punten)
-  - [ ] Zoeken
-    - [ ] Filter op categorieën (5 punten)
-    - [ ] Vrij invoerveld (5 punten)
-    - [ ] Categorieën + invoerveld (5 punten)
+  - [x] Zoeken
+    - [x] Filter op categorieën (5 punten)
+    - [x] Vrij invoerveld (5 punten)
+    - [x] Categorieën + invoerveld (5 punten)
 - [ ] Review detailpagina
   - [x] Naam, categorie, datum, inhoud, link naar beoordelingen (10 punten)
   - [x] Rekening houden met witruimtes (5 punten)
@@ -65,7 +65,7 @@ Hierin vind je:
 - [ ] Nieuwe review
   - [x] Aanpassen productnaam, categorie, inhoud (5 punten)
   - [ ] Meerdere categorieën mogelijk (5 punten)
-- [ ] Adminpagina
+- [x] Adminpagina
   - [x] Link naar beheer gebruikers, link naar beheer categorieeën, overzicht categorieën + CRUD (15 punten)
   - [x] Gebruiker in andere rol kunnen plaatsen (5 punten)
   - [x] Gebruiker actief/inactief kunnen maken (5 punten)

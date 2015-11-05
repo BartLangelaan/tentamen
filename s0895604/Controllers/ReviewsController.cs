@@ -14,7 +14,7 @@ namespace s0895604.Controllers
     public class ReviewsController : BaseController
     {
         // GET: Reviews
-        public ActionResult Index(int? category)
+        public ActionResult Index(int? category, string search)
         {
             if (LoggedInUser.Role == UserRole.Admin)
             {
@@ -23,7 +23,17 @@ namespace s0895604.Controllers
             }
             else
             {
-                var reviews = (from a in db.Reviews.Include(r => r.Category) where a.Category.CategoryId == category select a);
+                var reviews = db.Reviews.Include(r => r.Category);
+
+                if (category != null)
+                    reviews = (from a in reviews where a.Category.CategoryId == category && a.Active select a);
+
+                if (search != null)
+                    reviews = (from a in reviews where a.Content.ToLower().Contains(search.ToLower()) || a.Name.ToLower().Contains(search.ToLower()) select a);
+
+                ViewBag.category = new SelectList(db.Categories, "CategoryId", "Name", category);
+                ViewBag.search = search;
+
                 return View("IndexPublic", reviews);
             }
             // TODO: Add MyReviews
@@ -35,6 +45,7 @@ namespace s0895604.Controllers
         public ActionResult Mine()
         {
             var reviews = (from a in db.Reviews.Include(r => r.Category) where a.UserId == LoggedInUser.UserId select a);
+
             return View("IndexMine", reviews);
         }
 
