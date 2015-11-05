@@ -44,6 +44,8 @@ namespace s0895604.Controllers
         {
             var reviews = db.Reviews.Include(r => r.Category).Where(a => a.UserId == LoggedInUser.UserId);
 
+            ViewBag.CanCreateNew = db.Ratings.Count(r => r.UserId == LoggedInUser.UserId) >= 3;
+
             return View("IndexMine", reviews);
         }
 

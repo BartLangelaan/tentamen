@@ -6,7 +6,10 @@
 
 <h2>Alle reviews</h2>
 
-@Html.ActionLink("Nieuwe review", "Create")
+@if (ViewBag.CanCreateNew)
+{
+    @Html.ActionLink("Nieuwe review", "Create");
+}
 
 <table class="table">
     <tr>
