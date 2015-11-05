@@ -14,7 +14,7 @@ namespace s0895604.Controllers
     public class ReviewsController : BaseController
     {
         // GET: Reviews
-        public ActionResult Index(int? category, string search)
+        public ActionResult Index(int? category, string? search)
         {
             if (LoggedInUser.Role == UserRole.Admin)
             {
