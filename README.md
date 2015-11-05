@@ -4,6 +4,13 @@
 
 Tentamen MVC Hogeschool Rotterdam jaar 2 periode 1.
 
+## Instellingen
+
+Om dit project te maken is Microsoft Visual Studio 2015 Community Edition gebruikt.
+
+Als het project voor het eerst wordt geopend dan wordt de database gereset: er worden categorieën, users, reviews en beoordelingen aangemaakt. Om de database opnieuw te resetten kan gebruik gemaakt worden van de *Reset database* knop onderaan elke pagina. Dit gebeurt ook automatisch als er geen categorieën in de database staan.
+
+
 ## De opdracht
 De complete opdracht is te vinden via volgende link (google docs): https://goo.gl/giwxgN
 
