@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using s0895604.Models;
 
@@ -23,28 +20,29 @@ namespace s0895604.Controllers
             }
             else
             {
-                var reviews = db.Reviews.Include(r => r.Category);
+                var reviews = db.Reviews.Include(r => r.Category).Where(a => a.Active);
 
                 if (category != null)
-                    reviews = (from a in reviews where a.Category.CategoryId == category && a.Active select a);
+                    reviews = reviews.Where(a => a.Category.CategoryId == category);
 
                 if (search != null)
-                    reviews = (from a in reviews where a.Content.ToLower().Contains(search.ToLower()) || a.Name.ToLower().Contains(search.ToLower()) select a);
+                    reviews = reviews.Where(
+                        a =>
+                            a.Content.ToLower().Contains(search.ToLower()) ||
+                            a.Name.ToLower().Contains(search.ToLower())
+                        );
 
                 ViewBag.category = new SelectList(db.Categories, "CategoryId", "Name", category);
                 ViewBag.search = search;
 
                 return View("IndexPublic", reviews);
             }
-            // TODO: Add MyReviews
-            // TODO: Add Reviews from Category x
-            
         }
 
         // GET: Reviews/Mine
         public ActionResult Mine()
         {
-            var reviews = (from a in db.Reviews.Include(r => r.Category) where a.UserId == LoggedInUser.UserId select a);
+            var reviews = db.Reviews.Include(r => r.Category).Where(a => a.UserId == LoggedInUser.UserId);
 
             return View("IndexMine", reviews);
         }
@@ -56,9 +54,9 @@ namespace s0895604.Controllers
         {
             // TODO: Limit to user
 
-            var Review = db.Reviews.Find(reviewId);
-            Review.Active = !Review.Active;
-            db.Entry(Review).State = EntityState.Modified;
+            var review = db.Reviews.Find(reviewId);
+            review.Active = !review.Active;
+            db.Entry(review).State = EntityState.Modified;
             db.SaveChanges();
 
             return RedirectToAction("Mine");
@@ -72,7 +70,7 @@ namespace s0895604.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Review review = db.Reviews.Find(id);
+            var review = db.Reviews.Find(id);
             if (review == null)
             {
                 return HttpNotFound();
@@ -116,7 +114,7 @@ namespace s0895604.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Review review = db.Reviews.Find(id);
+            var review = db.Reviews.Find(id);
             if (review == null)
             {
                 return HttpNotFound();
@@ -157,7 +155,7 @@ namespace s0895604.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Review review = db.Reviews.Find(id);
+            var review = db.Reviews.Find(id);
             if (review == null)
             {
                 return HttpNotFound();
@@ -170,7 +168,7 @@ namespace s0895604.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Review review = db.Reviews.Find(id);
+            var review = db.Reviews.Find(id);
             // TODO: Limit to user
             db.Reviews.Remove(review);
             db.SaveChanges();

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 
 namespace s0895604.Models
 {
@@ -20,7 +16,7 @@ namespace s0895604.Models
             
         }
 
-        public System.Data.Entity.DbSet<s0895604.Models.User> Accounts { get; set; }
+        public DbSet<User> Accounts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -37,10 +33,10 @@ namespace s0895604.Models
             base.OnModelCreating(modelBuilder);
         }
 
-        public System.Data.Entity.DbSet<s0895604.Models.Review> Reviews { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
-        public System.Data.Entity.DbSet<s0895604.Models.Category> Categories { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
-        public System.Data.Entity.DbSet<s0895604.Models.Rating> Ratings { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
     }
 }
