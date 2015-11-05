@@ -1,7 +1,7 @@
 ﻿# Tentamen MVC
 [![Build status](https://img.shields.io/appveyor/ci/bartlangelaan/tentamen.svg)](https://ci.appveyor.com/project/BartLangelaan/tentamen)
 ![Aantal punten](https://img.shields.io/badge/punten-95%2F95-green.svg)
-![Extra punten](https://img.shields.io/badge/punten-50%2F75-yellow.svg)
+![Extra punten](https://img.shields.io/badge/extra-punten-50%2F75-yellow.svg)
 
 Tentamen MVC Hogeschool Rotterdam jaar 2 periode 1.
 
