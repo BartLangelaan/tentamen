@@ -6,6 +6,6 @@
     <h1>Consuming Critics</h1>
     <h2>Er zijn op dit moment <span class="label label-default">@ViewBag.Reviews reviews</span> en <span class="label label-default">@ViewBag.Ratings beoordelingen</span>.</h2>
     <p>
-        @Html.ActionLink("Log in »", "Login", "Users", htmlAttributes: new { @class = "btn btn-primary btn-lg" })
+        @Html.ActionLink("Log in »", "Login", "Users", new { area = "" }, new { @class = "btn btn-primary btn-lg" })
     </p>
 </div>
