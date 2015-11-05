@@ -14,5 +14,22 @@ namespace s0895604.Controllers
             ViewBag.Ratings = db.Ratings.Count();
             return View();
         }
+
+        public ActionResult Reset()
+        {
+            db.Database.ExecuteSqlCommand("delete from Ratings");
+            db.Database.ExecuteSqlCommand("delete from Reviews");
+            db.Database.ExecuteSqlCommand("delete from Categories");
+            db.Database.ExecuteSqlCommand("delete from Users");
+
+            if (db.Accounts.Count() != 0)
+            {
+                return Content("Resetting failed failed");
+            }
+
+
+
+            return RedirectToAction("Index");
+        }
     }
 }
