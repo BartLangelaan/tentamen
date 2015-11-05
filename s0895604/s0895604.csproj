@@ -201,6 +201,7 @@
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Users\Logout.cshtml" />
     <Content Include="Views\Home\LoggedInIndex.cshtml" />
+    <Content Include="Views\Reviews\IndexPublic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

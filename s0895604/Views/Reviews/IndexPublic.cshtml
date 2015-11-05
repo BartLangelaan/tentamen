@@ -1,0 +1,48 @@
+﻿@model IEnumerable<s0895604.Models.Review>
+
+@{
+    ViewBag.Title = "Reviews";
+}
+
+<h2>Alle reviews</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<!-- TODO: Filter maken -->
+
+<table class="table">
+    <tr>
+        <th>
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDateTime)
+        </th>
+        <th>
+
+        </th>
+    </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                <!-- TODO: Gemiddelde etc -->
+            </td>
+            <td>
+                @Html.ActionLink(item.Name, "Details", new { id = item.ReviewId })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDateTime)
+            </td>
+            <td>
+                @string.Join(" ", item.Content.Split(' ').Take(20))...
+            </td>
+        </tr>
+    }
+
+</table>

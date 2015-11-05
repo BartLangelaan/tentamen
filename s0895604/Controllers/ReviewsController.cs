@@ -14,12 +14,21 @@ namespace s0895604.Controllers
     public class ReviewsController : BaseController
     {
         // GET: Reviews
-        public ActionResult Index()
+        public ActionResult Index(int? category)
         {
+            if (LoggedInUser.Role == UserRole.Admin)
+            {
+                var reviews = db.Reviews.Include(r => r.Category).Include(r => r.User);
+                return View(reviews.ToList());
+            }
+            else
+            {
+                var reviews = (from a in db.Reviews.Include(r => r.Category) where a.Category.CategoryId == category select a);
+                return View("IndexPublic", reviews);
+            }
             // TODO: Add MyReviews
             // TODO: Add Reviews from Category x
-            var reviews = db.Reviews.Include(r => r.Category).Include(r => r.User);
-            return View(reviews.ToList());
+            
         }
 
 
