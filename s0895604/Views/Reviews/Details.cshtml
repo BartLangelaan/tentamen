@@ -1,58 +1,44 @@
-﻿@model s0895604.Models.Review
+﻿@using s0895604.Models
+@model s0895604.Models.Review
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h4>Review van: @Html.DisplayFor(model => model.Name)</h4>
+<dl class="dl-horizontal">
+    <dt>
+        Categorie:
+    </dt>
 
-<div>
-    <h4>Review</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.Name)
-        </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Category.Name)
+    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Category.Name)
-        </dd>
+    <dt>
+        Gemaakt door:
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.User.Username) (@Html.DisplayFor(model => model.CreatedDateTime))
+    </dd>
+</dl>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.User.Username)
-        </dt>
+<hr/>
 
-        <dd>
-            @Html.DisplayFor(model => model.User.Username)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedDateTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedDateTime)
-        </dd>
-
-    </dl>
-</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ReviewId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.Raw(Model.Content.Replace("\n", "</p><p>"))
 </p>
+
+<p>
+    <!-- TODO: Voeg stemoptie toe -->
+    @Html.ActionLink("Toon alle beoordelingen", "Index", "Ratings", new {id = Model.ReviewId }, null)
+</p>
+
+@if (ViewBag.LoggedInUser.Role == UserRole.Admin)
+{
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ReviewId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+

@@ -1,6 +1,6 @@
 ﻿# Tentamen MVC
 [![Build status](https://img.shields.io/appveyor/ci/bartlangelaan/tentamen.svg)](https://ci.appveyor.com/project/BartLangelaan/tentamen)
-![Aantal punten](https://img.shields.io/badge/aantal%20punten-60%2F95-red.svg)
+![Aantal punten](https://img.shields.io/badge/aantal%20punten-70%2F95-red.svg)
 
 Tentamen MVC Hogeschool Rotterdam jaar 2 periode 1.
 
@@ -18,9 +18,9 @@ Hierin vind je:
 
 - [x] Home, niet ingelogd (10 punten)
 - [x] Registreren (10 punten)
-- [X] Home, wel ingelogd
-  - [X] Lijst met categorieën (5 punten)
-  - [X] Laatste 5 reviews (5 punten)
+- [x] Home, wel ingelogd
+  - [x] Lijst met categorieën (5 punten)
+  - [x] Laatste 5 reviews (5 punten)
 - [ ] Reviews
   - [x] Lijst actieve reviews (10 punten)
   - [ ] Gemiddelde beoordeling per review (5 punten)
@@ -29,10 +29,10 @@ Hierin vind je:
     - [ ] Vrij invoerveld (5 punten)
     - [ ] Categorieën + invoerveld (5 punten)
 - [ ] Review detailpagina
-  - [ ] Naam, categorie, datum, inhoud, link naar beoordelingen (10 punten)
+  - [x] Naam, categorie, datum, inhoud, link naar beoordelingen (10 punten)
   - [ ] Rekening houden met witruimtes (5 punten)
   - [ ] Een beoordeling kunnen geven (5 punten)
-  - [ ] Niet 2x een beoordeling kan geven (5 punten)
+  - [ ] Niet 2x een beoordeling kunnen geven (5 punten)
 - [ ] Beoordelingen per review
   - [ ] Naam product + lijst waarderingen (10 punten)
   - [ ] Naam beoordelaar bij waardering (5 punten)
