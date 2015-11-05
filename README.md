@@ -1,6 +1,6 @@
 ﻿# Tentamen MVC
 [![Build status](https://img.shields.io/appveyor/ci/bartlangelaan/tentamen.svg)](https://ci.appveyor.com/project/BartLangelaan/tentamen)
-![Aantal punten](https://img.shields.io/badge/aantal%20punten-90%2F95-red.svg)
+![Aantal punten](https://img.shields.io/badge/aantal%20punten-110%2F95-green.svg)
 
 Tentamen MVC Hogeschool Rotterdam jaar 2 periode 1.
 
@@ -23,7 +23,7 @@ Hierin vind je:
   - [x] Laatste 5 reviews (5 punten)
 - [ ] Reviews
   - [x] Lijst actieve reviews (10 punten)
-  - [ ] Gemiddelde beoordeling per review (5 punten)
+  - [x] Gemiddelde beoordeling per review (5 punten)
   - [ ] Zoeken
     - [ ] Filter op categorieën (5 punten)
     - [ ] Vrij invoerveld (5 punten)
@@ -38,8 +38,8 @@ Hierin vind je:
   - [x] Naam beoordelaar bij waardering (5 punten)
 - [ ] Mijn reviews
   - [ ] Nieuwe review pas mogelijk na 3 beoordelingen (5 punten)
-  - [ ] Gemiddelde waardering, totaal aantal waarderingen, naam product, aanmaakdatum, 100 tekens inhoud, link om actief te maken, aanpasknop (10 punten)
-  - [ ] Link om actief te maken is anders als al actief is (5 putnen)
+  - [x] Gemiddelde waardering, totaal aantal waarderingen, naam product, aanmaakdatum, 100 tekens inhoud, link om actief te maken, aanpasknop (10 punten)
+  - [x] Link om actief te maken is anders als al actief is (5 putnen)
 - [ ] Pas review aan
   - [ ] Aanpassen productnaam, categorie, inhoud (5 punten)
   - [ ] Meerdere categorieën mogelijk (5 punten)
