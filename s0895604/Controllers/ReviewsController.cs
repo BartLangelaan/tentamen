@@ -112,7 +112,6 @@ namespace s0895604.Controllers
             }
             // TODO: Limit to user
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", review.CategoryId);
-            // TODO: Add ViewBag.UserId
             return View(review);
         }
 
@@ -121,17 +120,21 @@ namespace s0895604.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ReviewId,Name,Content,UserId,CreatedDateTime,CategoryId")] Review review)
+        public ActionResult Edit([Bind(Include = "ReviewId,Name,Content,CategoryId")] Review review)
         {
-            // TODO: Limit to user
+            ModelState.Remove("CreatedDateTime");
+            ModelState.Remove("UserId");
+
             if (ModelState.IsValid)
             {
-                db.Entry(review).State = EntityState.Modified;
+                var toUpdate = db.Reviews.Single(p => p.ReviewId == review.ReviewId);
+                toUpdate.Name = review.Name;
+                toUpdate.CategoryId = review.CategoryId;
+                toUpdate.Content = review.Content;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", review.CategoryId);
-            ViewBag.UserId = new SelectList(db.Accounts, "UserId", "Username", review.UserId);
             return View(review);
         }
 
