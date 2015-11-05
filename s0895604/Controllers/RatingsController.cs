@@ -14,11 +14,16 @@ namespace s0895604.Controllers
     public class RatingsController : BaseController
     {
 
-        // GET: Ratings?product=
-        public ActionResult Index(int? review)
+        // GET: Ratings[/Index/5]
+        public ActionResult Index(int? id)
         {
-            // TODO: Only list ratings from review
             var ratings = db.Ratings.Include(r => r.Review).Include(r => r.User);
+            if (id != null)
+            {
+                ratings = (from a in ratings where a.ReviewId == id select a);
+                ViewBag.Review = db.Reviews.Find(id);
+            }
+
             return View(ratings.ToList());
         }
 
