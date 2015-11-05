@@ -1,5 +1,6 @@
 # Tentamen MVC
-[![Build status](https://ci.appveyor.com/api/projects/status/m2961d88srjr87ix?svg=true)](https://ci.appveyor.com/project/BartLangelaan/tentamen)
+[![Build status](https://img.shields.io/appveyor/ci/bartlangelaan/tentamen.svg)](https://ci.appveyor.com/project/BartLangelaan/tentamen)
+![Aantal punten](https://img.shields.io/badge/Aantal%20punten-40%2F160-red.svg)
 
 Tentamen MVC Hogeschool Rotterdam jaar 2 periode 1.
 
@@ -13,4 +14,39 @@ Hierin vind je:
 - Uitleg per pagina over de eisen en voorwaarden
 - Puntenverdeling per pagina
 
-Verder is er een document met troubleshooting dat je hier kunt vinden: 
+### Punten
+
+- [x] Home, niet ingelogd (10 punten)
+- [x] Registreren (10 punten)
+- [ ] Home, wel ingelogd
+  - [ ] Lijst met categorieën (5 punten)
+  - [ ] Laatste 5 reviews (5 punten)
+- [ ] Reviews
+  - [ ] Lijst actieve reviews (5 punten)
+  - [ ] Gemiddelde beoordeling per review (5 punten)
+  - [ ] Zoeken
+    - [ ] Filter op categorieën (5 punten)
+    - [ ] Vrij invoerveld (5 punten)
+    - [ ] Categorieën + invoerveld (5 punten)
+- [ ] Review detailpagina
+  - [ ] Naam, categorie, datum, inhoud, link naar beoordelingen (10 punten)
+  - [ ] Rekening houden met witruimtes (5 punten)
+  - [ ] Een beoordeling kunnen geven (5 punten)
+  - [ ] Niet 2x een beoordeling kan geven (5 punten)
+- [ ] Beoordelingen per review
+  - [ ] Naam product + lijst waarderingen (10 punten)
+  - [ ] Naam beoordelaar bij waardering (5 punten)
+- [ ] Mijn reviews
+  - [ ] Nieuwe review pas mogelijk na 3 beoordelingen (5 punten)
+  - [ ] Gemiddelde waardering, totaal aantal waarderingen, naam product, aanmaakdatum, 100 tekens inhoud, link om actief te maken, aanpasknop (10 punten)
+  - [ ] Link om actief te maken is anders als al actief is (5 putnen)
+- [ ] Pas review aan
+  - [ ] Aanpassen productnaam, categorie, inhoud (5 punten)
+  - [ ] Meerdere categorieën mogelijk (5 punten)
+- [ ] Nieuwe review
+  - [ ] Aanpassen productnaam, categorie, inhoud (5 punten)
+  - [ ] Meerdere categorieën mogelijk (5 punten)
+- [ ] Adminpagina
+  - [x] Link naar beheer gebruikers, link naar beheer categorieeën, overzicht categorieën + CRUD (15 punten)
+  - [x] Gebruiker in andere rol kunnen plaatsen (5 punten)
+  - [ ] Gebruiker actief/inactief kunnen maken (5 punten)
