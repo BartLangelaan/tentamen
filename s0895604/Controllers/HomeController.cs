@@ -77,7 +77,8 @@ namespace s0895604.Controllers
                         Content = li,
                         CreatedDateTime = DateTime.Now,
                         Name = "Lorem Ipsum",
-                        UserId = userId
+                        UserId = userId,
+                        Active = true
                     });
                     userId++;
                     if (userId > 6) userId = 2;
