@@ -1,7 +1,23 @@
-﻿@{
+﻿@using s0895604.Models
+@{
     ViewBag.Title = "Home";
 }
 
-<div class="jumbotron">
-    Dashboard gek
+<div class="row">
+    <div class="col-md-3 col-md-offset-3">
+        <h3>Categorieën</h3>
+        <div class="list-group">
+            @foreach (Category category in ViewBag.Categories)
+            {
+                @Html.ActionLink(category.Name, "Index", "Reviews", new { category = category.CategoryId }, new { @class = "list-group-item" })
+            }
+        </div>
+    </div>
+    <div class="col-md-6">
+        @foreach (Review review in ViewBag.LatestReviews)
+        {
+            <h3>@review.Name</h3>
+            <p>@string.Join(" ", review.Content.Split(' ').Take(100))...</p>
+        }
+    </div>
 </div>

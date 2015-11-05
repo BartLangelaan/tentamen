@@ -22,10 +22,9 @@ namespace s0895604.Controllers
                 ViewBag.Ratings = db.Ratings.Count();
                 return View();
             }
-            else
-            {
-                return View("LoggedInIndex");
-            }
+            ViewBag.Categories = db.Categories.ToList();
+            ViewBag.LatestReviews = db.Reviews.OrderByDescending(x => x.CreatedDateTime).Take(5).ToList();
+            return View("LoggedInIndex");
         }
 
         public ActionResult Reset()
