@@ -16,6 +16,6 @@ namespace s0895604.Models
         [DisplayName("Naam")]
         public string Name { get; set; }
 
-        public virtual ICollection<Review> Reviews { get; set; } 
+        //public virtual ICollection<Review> Reviews { get; set; } 
     }
 }
