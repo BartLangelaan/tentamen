@@ -31,6 +31,27 @@ namespace s0895604.Controllers
             
         }
 
+        // GET: Reviews/Mine
+        public ActionResult Mine()
+        {
+            var reviews = (from a in db.Reviews.Include(r => r.Category) where a.UserId == LoggedInUser.UserId select a);
+            return View("IndexMine", reviews);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Mine(int reviewId)
+        {
+            // TODO: Limit to user
+
+            var Review = db.Reviews.Find(reviewId);
+            Review.Active = !Review.Active;
+            db.Entry(Review).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Mine");
+        }
 
 
         // GET: Reviews/Details/5
@@ -65,6 +86,7 @@ namespace s0895604.Controllers
             review.User = LoggedInUser;
             review.UserId = LoggedInUser.UserId;
             review.CreatedDateTime = DateTime.Now;
+            review.Active = true;
             if (ModelState.IsValid)
             {
                 db.Reviews.Add(review);
