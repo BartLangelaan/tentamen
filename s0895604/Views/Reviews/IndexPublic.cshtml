@@ -27,7 +27,8 @@
     @foreach (var item in Model) {
         <tr>
             <td>
-                <!-- TODO: Gemiddelde etc -->
+                @item.Ratings.Average(rating => rating.RatingNumber)
+                / @item.Ratings.Count() beoordelingen
             </td>
             <td>
                 @Html.ActionLink(item.Name, "Details", new { id = item.ReviewId })
