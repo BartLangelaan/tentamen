@@ -61,7 +61,7 @@ namespace s0895604.Controllers
             }
 
             ViewBag.ReviewId = new SelectList(db.Reviews, "ReviewId", "Name", rating.ReviewId);
-            // TODO: Add ViewBag.UserId
+            ViewBag.UserId = new SelectList(db.Accounts, "UserId", "Username", rating.ReviewId);
             return View(rating);
         }
 
@@ -79,7 +79,7 @@ namespace s0895604.Controllers
             }
             // Todo: Validate User
             ViewBag.ReviewId = new SelectList(db.Reviews, "ReviewId", "Name", rating.ReviewId);
-            // TODO: Add ViewBag.UserId
+            ViewBag.UserId = new SelectList(db.Accounts, "UserId", "Username", rating.ReviewId);
             return View(rating);
         }
 
@@ -98,7 +98,7 @@ namespace s0895604.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ReviewId = new SelectList(db.Reviews, "ReviewId", "Name", rating.ReviewId);
-            // TODO: Add ViewBag.UserId
+            ViewBag.UserId = new SelectList(db.Accounts, "UserId", "Username", rating.ReviewId);
             return View(rating);
         }
 
