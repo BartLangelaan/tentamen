@@ -42,7 +42,7 @@ namespace s0895604.Controllers
         public ActionResult Create()
         {
             ViewBag.ReviewId = new SelectList(db.Reviews, "ReviewId", "Name");
-            // TODO: Add ViewBag.UserId
+            ViewBag.UserId = new SelectList(db.Accounts, "UserId", "Username", LoggedInUser.UserId);
             return View();
         }
 
@@ -77,7 +77,6 @@ namespace s0895604.Controllers
             {
                 return HttpNotFound();
             }
-            // Todo: Validate User
             ViewBag.ReviewId = new SelectList(db.Reviews, "ReviewId", "Name", rating.ReviewId);
             ViewBag.UserId = new SelectList(db.Accounts, "UserId", "Username", rating.ReviewId);
             return View(rating);
@@ -90,7 +89,6 @@ namespace s0895604.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "RatingId,ReviewId,UserId,RatingNumber")] Rating rating)
         {
-            // TODO: Validate User
             if (ModelState.IsValid)
             {
                 db.Entry(rating).State = EntityState.Modified;
@@ -114,7 +112,6 @@ namespace s0895604.Controllers
             {
                 return HttpNotFound();
             }
-            // TODO: Validate User
             return View(rating);
         }
 
@@ -124,7 +121,6 @@ namespace s0895604.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Rating rating = db.Ratings.Find(id);
-            // TODO: Validate User
             db.Ratings.Remove(rating);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -54,7 +54,6 @@ namespace s0895604.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Mine(int reviewId)
         {
-            // TODO: Limit to user
 
             var review = db.Reviews.Find(reviewId);
             review.Active = !review.Active;
@@ -141,7 +140,6 @@ namespace s0895604.Controllers
             {
                 return HttpNotFound();
             }
-            // TODO: Limit to user
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", review.CategoryId);
             return View(review);
         }
@@ -172,7 +170,6 @@ namespace s0895604.Controllers
         // GET: Reviews/Delete/5
         public ActionResult Delete(int? id)
         {
-            // TODO: Limit to user
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -191,7 +188,6 @@ namespace s0895604.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             var review = db.Reviews.Find(id);
-            // TODO: Limit to user
             db.Reviews.Remove(review);
             db.SaveChanges();
             return RedirectToAction("Index");
