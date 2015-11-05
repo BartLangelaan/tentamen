@@ -10,6 +10,8 @@ namespace s0895604.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Reviews = db.Reviews.Count();
+            ViewBag.Ratings = db.Ratings.Count();
             return View();
         }
 
