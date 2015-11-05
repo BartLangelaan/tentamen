@@ -10,6 +10,18 @@ Om dit project te maken is Microsoft Visual Studio 2015 Community Edition gebrui
 
 Als het project voor het eerst wordt geopend dan wordt de database gereset: er worden categorieën, users, reviews en beoordelingen aangemaakt. Om de database opnieuw te resetten kan gebruik gemaakt worden van de *Reset database* knop onderaan elke pagina. Dit gebeurt ook automatisch als er geen categorieën in de database staan.
 
+Er worden 6 gebruikersaccounts aangemaakt. Dit zijn:
+
+- admin
+- bob
+- chantal
+- dieuwertje
+- emiel
+- stan
+
+Al deze gebruikersnamen hebben als wachtwoord:  `wachtwoord`.
+
+
 
 ## De opdracht
 De complete opdracht is te vinden via volgende link (google docs): https://goo.gl/giwxgN
