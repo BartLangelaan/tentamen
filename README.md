@@ -1,7 +1,7 @@
 ﻿# Tentamen MVC
 [![Build status](https://img.shields.io/appveyor/ci/bartlangelaan/tentamen.svg)](https://ci.appveyor.com/project/BartLangelaan/tentamen)
 ![Aantal punten](https://img.shields.io/badge/punten-95%2F95-green.svg)
-![Extra punten](https://img.shields.io/badge/extra_punten-50%2F75-yellow.svg)
+![Extra punten](https://img.shields.io/badge/extra_punten-60%2F75-yellow.svg)
 
 Tentamen MVC Hogeschool Rotterdam jaar 2 periode 1.
 
@@ -48,11 +48,11 @@ Hierin vind je:
     - [x] Filter op categorieën (5 punten)
     - [x] Vrij invoerveld (5 punten)
     - [x] Categorieën + invoerveld (5 punten)
-- [ ] Review detailpagina
+- [x] Review detailpagina
   - [x] Naam, categorie, datum, inhoud, link naar beoordelingen (10 punten)
   - [x] Rekening houden met witruimtes (5 punten)
-  - [ ] Een beoordeling kunnen geven (5 punten)
-  - [ ] Niet 2x een beoordeling kunnen geven (5 punten)
+  - [x] Een beoordeling kunnen geven (5 punten)
+  - [x] Niet 2x een beoordeling kunnen geven (5 punten)
 - [x] Beoordelingen per review
   - [x] Naam product + lijst waarderingen (10 punten)
   - [x] Naam beoordelaar bij waardering (5 punten)

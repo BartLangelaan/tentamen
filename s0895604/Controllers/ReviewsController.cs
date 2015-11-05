@@ -64,6 +64,7 @@ namespace s0895604.Controllers
 
 
         // GET: Reviews/Details/5
+        [HttpGet]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -75,7 +76,26 @@ namespace s0895604.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.AlreadyRated = db.Ratings.Any(a => a.UserId == LoggedInUser.UserId && a.ReviewId == id);
+
             return View(review);
+        }
+
+        // POST: Reviews/Details/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details(int id, int rating)
+        {
+            db.Ratings.Add(new Rating
+            {
+                ReviewId = id,
+                UserId = LoggedInUser.UserId,
+                RatingNumber = rating
+            });
+            db.SaveChanges();
+
+            return RedirectToAction("Details");
         }
 
         // GET: Reviews/Create

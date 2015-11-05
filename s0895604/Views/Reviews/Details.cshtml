@@ -29,10 +29,34 @@
     @Html.Raw(Model.Content.Replace("\n", "</p><p>"))
 </p>
 
-<p>
-    <!-- TODO: Voeg stemoptie toe -->
-    @Html.ActionLink("Toon alle beoordelingen", "Index", "Ratings", new {id = Model.ReviewId }, null)
-</p>
+<div class="text-right">
+    @if (ViewBag.AlreadyRated)
+    {
+        <p>Je hebt al gestemd.</p>
+    }
+    else
+    {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <text>Slecht</text>
+                <input type="radio" name="rating" value="1" />
+                <input type="radio" name="rating" value="2" />
+                <input type="radio" name="rating" value="3" />
+                <input type="radio" name="rating" value="4" />
+                <input type="radio" name="rating" value="5" />
+                <text>Goed</text>
+                <input type="submit" value="stem" />
+            </div>
+        }
+    }
+
+
+
+    <p>@Html.ActionLink("Toon alle beoordelingen", "Index", "Ratings", new { id = Model.ReviewId }, null)</p>
+</div>
 
 @if (ViewBag.LoggedInUser.Role == UserRole.Admin)
 {
