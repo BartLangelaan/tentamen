@@ -23,7 +23,7 @@ namespace s0895604.Controllers
                 return View();
             }
             ViewBag.Categories = db.Categories.ToList();
-            ViewBag.LatestReviews = db.Reviews.OrderByDescending(x => x.CreatedDateTime).Take(5).ToList();
+            ViewBag.LatestReviews = db.Reviews.Where(a => a.Active).OrderByDescending(x => x.CreatedDateTime).Take(5).ToList();
             return View("LoggedInIndex");
         }
 
