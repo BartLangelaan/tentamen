@@ -27,8 +27,14 @@
     @foreach (var item in Model) {
         <tr>
             <td>
-                @item.Ratings.Average(rating => rating.RatingNumber)
-                / @item.Ratings.Count() beoordelingen
+                @if (item.Ratings.Any())
+                {
+                    @item.Ratings.Average(rating => rating.RatingNumber)
+                    <text> / </text>
+                }
+
+                @item.Ratings.Count()
+                <text>beoordelingen</text>
             </td>
             <td>
                 @Html.ActionLink(item.Name, "Details", new { id = item.ReviewId })
